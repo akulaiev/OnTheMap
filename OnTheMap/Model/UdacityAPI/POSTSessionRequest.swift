@@ -9,7 +9,9 @@
 import Foundation
 
 struct POSTSessionRequest: Codable {
-    let username: String
-    let password: String
-    let udacity: [String : String]
+    let udacity: Dictionary<String, String>
+    
+    init(username: String, password: String) {
+        self.udacity = ["username": username, "password": password]
+    }
 }

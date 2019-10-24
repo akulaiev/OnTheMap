@@ -12,6 +12,9 @@
 		2DDF9A1E2360AE8C008570CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DDF9A1D2360AE8C008570CA /* Assets.xcassets */; };
 		2DDF9A2D2360B046008570CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A2C2360B046008570CA /* LoginViewController.swift */; };
 		2DDF9A32236121C4008570CA /* POSTSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A31236121C4008570CA /* POSTSessionRequest.swift */; };
+		2DEE8EC62361BD1100CD84D8 /* POSTSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE8EC52361BD1100CD84D8 /* POSTSessionResponse.swift */; };
+		2DEE8EC82361BEA300CD84D8 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE8EC72361BEA300CD84D8 /* UdacityClient.swift */; };
+		2DEE8ECB2361C10200CD84D8 /* NetworkingTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE8ECA2361C10200CD84D8 /* NetworkingTasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		2DDF9A222360AE8C008570CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DDF9A2C2360B046008570CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2DDF9A31236121C4008570CA /* POSTSessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTSessionRequest.swift; sourceTree = "<group>"; };
+		2DEE8EC52361BD1100CD84D8 /* POSTSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTSessionResponse.swift; sourceTree = "<group>"; };
+		2DEE8EC72361BEA300CD84D8 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		2DEE8ECA2361C10200CD84D8 /* NetworkingTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 		2DDF9A282360AE96008570CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2DEE8EC92361C0C900CD84D8 /* NetvorkingTasks */,
 				2DDF9A3023612170008570CA /* UdacityAPI */,
 			);
 			path = Model;
@@ -92,8 +99,18 @@
 			isa = PBXGroup;
 			children = (
 				2DDF9A31236121C4008570CA /* POSTSessionRequest.swift */,
+				2DEE8EC52361BD1100CD84D8 /* POSTSessionResponse.swift */,
+				2DEE8EC72361BEA300CD84D8 /* UdacityClient.swift */,
 			);
 			path = UdacityAPI;
+			sourceTree = "<group>";
+		};
+		2DEE8EC92361C0C900CD84D8 /* NetvorkingTasks */ = {
+			isa = PBXGroup;
+			children = (
+				2DEE8ECA2361C10200CD84D8 /* NetworkingTasks.swift */,
+			);
+			path = NetvorkingTasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +183,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEE8ECB2361C10200CD84D8 /* NetworkingTasks.swift in Sources */,
+				2DEE8EC82361BEA300CD84D8 /* UdacityClient.swift in Sources */,
 				2DDF9A32236121C4008570CA /* POSTSessionRequest.swift in Sources */,
+				2DEE8EC62361BD1100CD84D8 /* POSTSessionResponse.swift in Sources */,
 				2DDF9A2D2360B046008570CA /* LoginViewController.swift in Sources */,
 				2DDF9A172360AE8C008570CA /* AppDelegate.swift in Sources */,
 			);
