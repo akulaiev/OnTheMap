@@ -15,14 +15,27 @@ class UdacityClient {
         static var sessionId: String = ""
     }
     
-    static let baseString = "https://onthemap-api.udacity.com/v1/session"
-    static var baseUrl: URL {
-        return URL(string: baseString)!
+    enum Endpoints {
+        static let baseString = "https://onthemap-api.udacity.com/v1"
+        
+        case session
+        case location
+        
+        var stringValue: String {
+            switch self {
+                case .session: return Endpoints.baseString + "/session"
+                case .location: return Endpoints.baseString + "/StudentLocation"
+            }
+        }
+        
+        var url: URL {
+            return URL(string: stringValue)!
+        }
     }
     
     class func getSessionID(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let body =  POSTSessionRequest(username: username, password: password)
-        NetworkingTasks.taskForPostRequest(udacityApi: true, url: baseUrl, responseType: POSTSessionResponse.self, body: body) { (response, error) in
+        NetworkingTasks.taskForRequest(requestMethod: "POST", udacityApi: true, url: Endpoints.session.url, responseType: POSTSessionResponse.self, body: body) { (response, error) in
             guard let response = response else {
                 completion(false, error)
                 return
@@ -34,7 +47,7 @@ class UdacityClient {
     }
     
     class func logout(completion: @escaping () -> Void) {
-        var request = URLRequest(url: UdacityClient.baseUrl)
+        var request = URLRequest(url: Endpoints.session.url)
         request.httpMethod = "DELETE"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -45,5 +58,18 @@ class UdacityClient {
             }
         }
         task.resume()
+    }
+    
+    class func getStudentsLocations(completion: @escaping (StudentLocationResponse?, Error?) -> Void)  {
+        let url = URL(string: Endpoints.location.stringValue + "?limit=100")!
+        let emptyBody: String? = nil
+        NetworkingTasks.taskForRequest(requestMethod: "GET", udacityApi: false, url: url, responseType: StudentLocationResponse.self, body: emptyBody) { (response, error) in
+            if let response = response {
+                completion(response, nil)
+            }
+            else {
+                completion(nil, error)
+            }
+        }
     }
 }

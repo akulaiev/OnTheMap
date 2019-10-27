@@ -32,8 +32,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             else {
-                print(UdacityClient.AuthenticationInfo.apiKey)
-                print(UdacityClient.AuthenticationInfo.sessionId)
+//                print(UdacityClient.AuthenticationInfo.apiKey)
+//                print(UdacityClient.AuthenticationInfo.sessionId)
                 self.performSegue(withIdentifier: "toMap", sender: self)
             }
         }

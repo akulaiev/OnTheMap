@@ -10,12 +10,14 @@ import Foundation
 
 class NetworkingTasks {
     
-    class func taskForPostRequest<RequestType: Encodable, ResponseType: Decodable>(udacityApi: Bool, url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(requestMethod: String, udacityApi: Bool, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = requestMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = body
-        request.httpBody = try! JSONEncoder().encode(body)
+        if let body = body {
+            request.httpBody = try! JSONEncoder().encode(body)
+        }
+
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 DispatchQueue.main.async {
