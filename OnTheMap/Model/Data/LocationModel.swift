@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Shared location data model
 class LocationModel {
     static var mapData = [StudentInformation]()
 }

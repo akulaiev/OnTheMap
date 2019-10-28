@@ -15,50 +15,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
+    //Sets textfields delegates and button corner radius
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.cornerRadius = 5
-        emailTextField.text = "paprika1@ukr.net"
-        passwordTextField.text = "natalia39"
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
+    //Clears textfields
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    //When user tapps the "login" button, function performs login request, handles errors and updates UI accordingly
     @IBAction func loginTapped(_ sender: UIButton) {
-        updateUIState(isLoading: true)
+        SharedHelperMethods.updateUIState(isLoading: true, activityIndicator: activityIndicator, textfieldOne: emailTextField, textfieldTwo: passwordTextField, button: loginButton, buttonOptional: signUpButton)
         UdacityClient.getSessionID(username: emailTextField.text!, password: passwordTextField.text!) { (success, error) in
-            self.updateUIState(isLoading: false)
+            SharedHelperMethods.updateUIState(isLoading: false, activityIndicator: self.activityIndicator, textfieldOne: self.emailTextField, textfieldTwo: self.passwordTextField, button: self.loginButton, buttonOptional: self.signUpButton)
             if !success {
-                self.showLoginFailure(message: "Wrong login credentials!")
+                print(error!.localizedDescription)
+                if error!.localizedDescription == "The Internet connection appears to be offline." {
+                    SharedHelperMethods.showFailureAlert(title: "Login Failed!", message: error!.localizedDescription, controller: self)
+                }
+                else {
+                    SharedHelperMethods.showFailureAlert(title: "Login Failed!", message: "Wrong login credentials.", controller: self)
+                }
                 return
             }
             else {
-//                print(UdacityClient.AuthenticationInfo.apiKey)
-//                print(UdacityClient.AuthenticationInfo.sessionId)
                 self.performSegue(withIdentifier: "toMap", sender: self)
             }
         }
     }
     
+    //When user tapps the "sign In" button, function opens Udacity's sign in page in Safari
     @IBAction func signUpTapped(_ sender: UIButton) {
         UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)
-    }
-    
-    func updateUIState(isLoading: Bool) {
-        if isLoading {
-            activityIndicator.startAnimating()
-        }
-        else {
-            activityIndicator.stopAnimating()
-        }
-        emailTextField.isEnabled = !isLoading
-        passwordTextField.isEnabled = !isLoading
-        loginButton.isEnabled = !isLoading
-        signUpButton.isEnabled = !isLoading
-    }
-    
-    func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertVC, animated: true)
     }
 }

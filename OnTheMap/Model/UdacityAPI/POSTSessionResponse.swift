@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct LocationPostResponse: Codable {
+    let createdAt: String
+    let objectId: String
+}
+
 struct Account: Codable {
     let registered: Bool
     let key: String

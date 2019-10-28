@@ -22,6 +22,9 @@
 		A069493423639C98005632E4 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069493323639C98005632E4 /* LocationModel.swift */; };
 		A06949362363C22C005632E4 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06949352363C22C005632E4 /* AddLocationViewController.swift */; };
 		A06949382363C249005632E4 /* AddLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06949372363C249005632E4 /* AddLocationMapViewController.swift */; };
+		A069493A2367243C005632E4 /* MyPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06949392367243C005632E4 /* MyPointAnnotation.swift */; };
+		A069493C23674768005632E4 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069493B23674768005632E4 /* UserDataResponse.swift */; };
+		A069493E2367684E005632E4 /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069493D2367684E005632E4 /* SharedHelperMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +43,11 @@
 		A0694925236318B9005632E4 /* StudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResponse.swift; sourceTree = "<group>"; };
 		A069492B2363674E005632E4 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		A069493323639C98005632E4 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		A06949352363C22C005632E4 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		A06949352363C22C005632E4 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		A06949372363C249005632E4 /* AddLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationMapViewController.swift; sourceTree = "<group>"; };
+		A06949392367243C005632E4 /* MyPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPointAnnotation.swift; sourceTree = "<group>"; };
+		A069493B23674768005632E4 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
+		A069493D2367684E005632E4 /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 				2DDF9A2A2360AEA7008570CA /* Controller */,
 				2DDF9A282360AE96008570CA /* Model */,
 				2DDF9A2B2360AF63008570CA /* Assets */,
+				A069493D2367684E005632E4 /* SharedHelperMethods.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 				2DEE8EC52361BD1100CD84D8 /* POSTSessionResponse.swift */,
 				2DEE8EC72361BEA300CD84D8 /* UdacityClient.swift */,
 				A069492B2363674E005632E4 /* StudentInformation.swift */,
+				A069493B23674768005632E4 /* UserDataResponse.swift */,
 			);
 			path = UdacityAPI;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A069493323639C98005632E4 /* LocationModel.swift */,
+				A06949392367243C005632E4 /* MyPointAnnotation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -221,10 +230,13 @@
 				2DDF9A2D2360B046008570CA /* LoginViewController.swift in Sources */,
 				A06949362363C22C005632E4 /* AddLocationViewController.swift in Sources */,
 				A06949382363C249005632E4 /* AddLocationMapViewController.swift in Sources */,
+				A069493A2367243C005632E4 /* MyPointAnnotation.swift in Sources */,
 				2DDF9A172360AE8C008570CA /* AppDelegate.swift in Sources */,
 				2DDF9A3623625709008570CA /* ListViewController.swift in Sources */,
+				A069493C23674768005632E4 /* UserDataResponse.swift in Sources */,
 				A069492C2363674E005632E4 /* StudentInformation.swift in Sources */,
 				2DDF9A34236256F0008570CA /* MapViewController.swift in Sources */,
+				A069493E2367684E005632E4 /* SharedHelperMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

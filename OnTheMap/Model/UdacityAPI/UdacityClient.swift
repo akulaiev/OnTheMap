@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Class that performs all the networking tasks and handles responses with completion handlers
 class UdacityClient {
     
     struct AuthenticationInfo {
@@ -20,11 +21,13 @@ class UdacityClient {
         
         case session
         case location
+        case userData
         
         var stringValue: String {
             switch self {
                 case .session: return Endpoints.baseString + "/session"
                 case .location: return Endpoints.baseString + "/StudentLocation"
+                case .userData: return Endpoints.baseString + "/users/"
             }
         }
         
@@ -61,7 +64,7 @@ class UdacityClient {
     }
     
     class func getStudentsLocations(completion: @escaping (StudentLocationResponse?, Error?) -> Void)  {
-        let url = URL(string: Endpoints.location.stringValue + "?limit=100")!
+        let url = URL(string: Endpoints.location.stringValue + "?limit=100" + "&order=-updatedAt")!
         let emptyBody: String? = nil
         NetworkingTasks.taskForRequest(requestMethod: "GET", udacityApi: false, url: url, responseType: StudentLocationResponse.self, body: emptyBody) { (response, error) in
             if let response = response {
@@ -70,6 +73,28 @@ class UdacityClient {
             else {
                 completion(nil, error)
             }
+        }
+    }
+    
+    class func getUserData(completion: @escaping (UserDataResponse?, Error?) -> Void) {
+        let url = URL(string: Endpoints.userData.stringValue + AuthenticationInfo.sessionId)!
+        let emptyBody: String? = nil
+        NetworkingTasks.taskForRequest(requestMethod: "GET", udacityApi: true, url: url, responseType: UserDataResponse.self, body: emptyBody) { (response, error) in
+            guard let response = response else {
+                completion(nil, error)
+                return
+            }
+            completion(response, nil)
+        }
+    }
+    
+    class func postStudentLocation(userData: StudentInformation, completion: @escaping (Bool, Error?) -> Void) {
+        NetworkingTasks.taskForRequest(requestMethod: "POST", udacityApi: false, url: Endpoints.location.url, responseType: LocationPostResponse.self, body: userData) { (response, error) in
+            guard response != nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
         }
     }
 }

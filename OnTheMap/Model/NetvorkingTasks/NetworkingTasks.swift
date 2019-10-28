@@ -10,6 +10,7 @@ import Foundation
 
 class NetworkingTasks {
     
+    //Static function to perform all kinds of networking requests
     class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(requestMethod: String, udacityApi: Bool, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = requestMethod
