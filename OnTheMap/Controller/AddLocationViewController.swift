@@ -21,6 +21,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     //Sets the initial state of textfields and corner radius for the button
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationTextField.delegate = self
+        linkTextField.delegate = self
         locationTextField.text = ""
         linkTextField.text = ""
         findLocationButton.layer.cornerRadius = 5
@@ -77,6 +79,12 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             VC.placemark = placemark
             VC.url = linkTextField.text!
         }
+    }
+    
+    //Hides keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     //Calls the function to search location whrn the user taps the "Find" button

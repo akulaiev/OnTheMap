@@ -50,13 +50,13 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate, CLLocat
     func getAndPostUserData() {
         UdacityClient.getUserData { (response, error) in
             guard let response = response else {
-                print(error!.localizedDescription)
+                SharedHelperMethods.showFailureAlert(title: "Post request failed", message: error!.localizedDescription, controller: self)
                 return
             }
             self.userData = StudentInformation(uniqueKey: UdacityClient.AuthenticationInfo.apiKey, firstName: response.firstName, lastName: response.lastName, mapString: self.placemark, mediaURL: self.url, latitude: Float(self.location!.latitude), longitude: Float(self.location!.longitude))
             UdacityClient.postStudentLocation(userData: self.userData!) { (success, error) in
                 if !success {
-                    print(error!.localizedDescription)
+                    SharedHelperMethods.showFailureAlert(title: "Post request failed", message: error!.localizedDescription, controller: self)
                     return
                 }
                 self.dismiss(animated: true, completion: nil)

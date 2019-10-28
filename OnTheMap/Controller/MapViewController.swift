@@ -42,7 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
                 }
             }
             else {
-                print(error!.localizedDescription)
+                SharedHelperMethods.showFailureAlert(title: "Problem with student locations download", message: error!.localizedDescription, controller: self)
             }
         }
     }

@@ -13,7 +13,7 @@ class SharedHelperMethods {
     
     //Shows error alerts
     static func showFailureAlert(title: String, message: String, controller: UIViewController) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         controller.present(alertVC, animated: true)
     }

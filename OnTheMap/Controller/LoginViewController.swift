@@ -19,6 +19,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //Sets textfields delegates and button corner radius
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         loginButton.layer.cornerRadius = 5
         emailTextField.text = ""
         passwordTextField.text = ""
@@ -50,6 +52,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "toMap", sender: self)
             }
         }
+    }
+    
+    //Hides keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     //When user tapps the "sign In" button, function opens Udacity's sign in page in Safari

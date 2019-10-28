@@ -74,7 +74,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.listTableView.reloadData()
             }
             else {
-                print(error!.localizedDescription)
+                SharedHelperMethods.showFailureAlert(title: "Problem with student locations download", message: error!.localizedDescription, controller: self)
             }
         }
     }
